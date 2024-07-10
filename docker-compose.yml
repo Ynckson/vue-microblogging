@@ -1,0 +1,17 @@
+services:
+  api:
+    build: api
+    command: ./bin/dev
+    ports:
+      - "127.0.0.1:3000:3000"
+    volumes:
+      - "./api:/api"
+    tty: true
+  webapp:
+    build:
+      context: ./webapp
+    ports:
+      - "127.0.0.1:4000:4000"
+    command: npm run serve
+    volumes:
+      - "./webapp:/app"  
